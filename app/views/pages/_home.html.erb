@@ -1,7 +1,40 @@
-<div class="jumbotron center">
-     <h1>Welcome to the Small World!</h1>
+<div class="mainIntro center">
+     <h1>Welcome to A Small World!</h1>
        <p>
          <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
        </p>
+
+      <div class="choice">
+
+
+			<div class="continent">
+				<h2><%= link_to "America", america_path %></h2>
+			</div>
+
+
+			<div class="continent">
+				<h2><%= link_to "Africa", africa_path %></h2>
+			</div>
+
+
+			<div class="continent">
+			    <h2><%= link_to "Europe", europe_path %></h2>
+			</div>
+
+			<div class="continent">
+				<h2><%= link_to "Asia", asia_path %></h2>
+			</div>
+
+			<div class="continent">
+				<h2><%= link_to "Australia", australia_path %></h2>
+			</div>
+
+			<div class="continent">
+				<h2><%= link_to "Antartica", antartica_path %></h2>
+			</div>
+	   </div>
 </div>
+
+
+

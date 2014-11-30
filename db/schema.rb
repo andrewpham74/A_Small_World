@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115190046) do
+ActiveRecord::Schema.define(version: 20141130000007) do
+
+  create_table "continents", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interests", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pins", force: true do |t|
     t.string   "description"
@@ -22,6 +43,10 @@ ActiveRecord::Schema.define(version: 20141115190046) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "continenetname"
+    t.string   "continent"
+    t.string   "country"
+    t.string   "interest"
   end
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
@@ -40,6 +65,16 @@ ActiveRecord::Schema.define(version: 20141115190046) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "user_countryname"
+    t.string   "user_continentname"
+    t.string   "user_interest"
+    t.string   "user_city"
+    t.string   "user_talent"
+    t.string   "countries_to_see"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

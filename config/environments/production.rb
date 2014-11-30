@@ -79,7 +79,7 @@ Pinteresting::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # require for heroku
-  config.action_mailer.default_url_options = { :host => 'omr-andrewpham.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'evening-spire-8635.herokuapp.com' }
    
 # Sets paperclip to upload images to Amazon S3   
 config.paperclip_defaults = {
@@ -91,6 +91,15 @@ config.paperclip_defaults = {
   }
 }
 
+ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true
+}
 
 
 end

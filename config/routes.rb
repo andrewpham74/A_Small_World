@@ -5,6 +5,24 @@ Pinteresting::Application.routes.draw do
   root "pins#index"
   get "about" => "pages#about"
 
+  # new pages
+  get "america" => "pages#america"
+  get "europe" => "pages#europe"
+  get "africa" => "pages#africa"
+  get "asia" => "pages#asia"
+  get "australia" => "pages#australia"
+  get "antartica" => "pages#antartica"
+
+ # to display the pins upon user's signing in
+  get "login" => "pages#user_profile"
+  get "my_pins" => "pages#my_pins"
+
+ # to display the terms of service and private policy
+ get "america" => "pages#america"
+
+  get "termsofservice" => "pages#terms_of_service"
+  get "privacypolicy" => "pages#privacy_policy"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -9,6 +9,9 @@
 			</div>
 			<div class="panel-body">
 			     <p><%= @pin.description %></p>
+			     <p><%= @pin.continent %></p>
+                 <p><%= @pin.country %></p>
+                 <p><%= @pin.interest %></p>
 				 <p><strong><%= @pin.user.name if @pin.user %></strong></p>
 
 						 <% if @pin.user == current_user %>

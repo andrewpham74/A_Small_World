@@ -8,6 +8,11 @@ protected
 
  def configure_permitted_parameters
    devise_parameter_sanitizer.for(:sign_up) << :name
+   devise_parameter_sanitizer.for(:sign_up) << :user_countryname
+   devise_parameter_sanitizer.for(:sign_up) << :user_continentname
+   devise_parameter_sanitizer.for(:sign_up) << :user_city
+   devise_parameter_sanitizer.for(:sign_up) << :user_interest
+   devise_parameter_sanitizer.for(:sign_up) << :countries_to_see
    devise_parameter_sanitizer.for(:account_update) << :name
  end
 end
