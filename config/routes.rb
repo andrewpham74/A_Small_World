@@ -6,12 +6,12 @@ Pinteresting::Application.routes.draw do
   get "about" => "pages#about"
 
   # new pages
-  get "america" => "pages#america"
+  get "north_america" => "pages#north_america"
   get "europe" => "pages#europe"
   get "africa" => "pages#africa"
   get "asia" => "pages#asia"
   get "australia" => "pages#australia"
-  get "antartica" => "pages#antartica"
+  get "south_america" => "pages#south_america"
 
  # to display the pins upon user's signing in
   get "login" => "pages#user_profile"

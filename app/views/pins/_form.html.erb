@@ -1,11 +1,11 @@
 <script type="text/javascript">
   $(document).ready(function() {
       $(".pin_continentname").hide();
-      $("#pin_continentname_" + $("#pin_continent").val()).show();
+      $("#pin_continentname_" + $("#pin_continent").val().replace(/\s/g, '')).show();
 
     $("#pin_continent").change(function() {
       $(".pin_continentname").hide();
-      $("#pin_continentname_" + $(this).val()).show();
+      $("#pin_continentname_" + $(this).val().replace(/\s/g, '')).show();
     });
 
     $("#new_pin").submit(function() {
@@ -40,8 +40,8 @@
   </div>
   <div class="form-group">
     <div><%= f.label :country, 'Country' %><br />
-        <div id="pin_continentname_America" class="pin_continentname">
-      <%= f.select :country, AMERICA_COUNTRIES %>
+        <div id="pin_continentname_NorthAmerica" class="pin_continentname">
+      <%= f.select :country, NORTH_AMERICA_COUNTRIES %>
     </div>
 
     <div id="pin_continentname_Asia" class="pin_continentname">
@@ -60,8 +60,8 @@
       <%= f.select :country, AUSTRALIA_COUNTRIES %>
     </div>
 
-    <div id="pin_continentname_Antarctica" class="pin_continentname">
-      <%= f.select :country, ANTARCTICA_COUNTRIES %>
+    <div id="pin_continentname_SouthAmerica" class="pin_continentname">
+      <%= f.select :country, SOUTH_AMERICA_COUNTRIES %>
     </div>
     <br>
    </div>
@@ -69,7 +69,7 @@
     <div><%= label_tag 'pin[interest_ids][]', 'Interests' %><br />
 
     <table>
-      <% Interest.order('name ASC').each_slice(3) do |slice| %>
+      <% Interest.order('name ASC').each_slice(13) do |slice| %>
         <tr>
           <% slice.each do |interest| %>
             <td>

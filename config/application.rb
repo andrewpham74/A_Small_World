@@ -25,14 +25,14 @@ module Pinteresting
   end
 end
 
-CONTINENTS = ['America', 'Asia', 'Africa', 'Europe', 'Australia', 'Antarctica']
-AMERICA_COUNTRIES = ['USA']
-AFRICA_COUNTRIES = ['Kenya']
-ASIA_COUNTRIES = ['China']
-ANTARCTICA_COUNTRIES = ['Antarctica']
-EUROPE_COUNTRIES = ['France']
-AUSTRALIA_COUNTRIES = ['Queensland']
-COUNTRIES = AMERICA_COUNTRIES + AFRICA_COUNTRIES + ASIA_COUNTRIES + ANTARCTICA_COUNTRIES + EUROPE_COUNTRIES + AUSTRALIA_COUNTRIES
+CONTINENTS = ['North America', 'South America','Asia', 'Africa', 'Europe', 'Australia']
+NORTH_AMERICA_COUNTRIES = ['USA', 'Canada', ]
+SOUTH_AMERICA_COUNTRIES = ['Argentina', 'Chile', 'Paragua']
+AFRICA_COUNTRIES = ['Kenya', 'Nigeria', 'South Africa']
+ASIA_COUNTRIES = ['China', 'Thailand', 'Laos']
+EUROPE_COUNTRIES = ['France', 'Germany', 'UK', 'Belgimun']
+AUSTRALIA_COUNTRIES = ['Australia']
+COUNTRIES = NORTH_AMERICA_COUNTRIES + SOUTH_AMERICA_COUNTRIES + AFRICA_COUNTRIES + ASIA_COUNTRIES + EUROPE_COUNTRIES + AUSTRALIA_COUNTRIES
 INTERESTS = ["Entertainment", "Cooking", "Fruit", "Vegetation", "Animals", "Children", "School", "Education", "Arts", "Music", "Opera", "Design", "Festivals", "Roads", "Highways", "Streets", "Museums", "Business", "Dance", "Theatre", "Painting", "Markets", "Nature", "Religious Sites", "Restaurants", "Foods", "Fashion", "Mountains", "Infrastructure", "Life", "Culture", "Outdoor", "Fishing", "Ocean", "Agriculture", "Industry", "People", "Women", "Men"]
 
 require 'will_paginate/array'

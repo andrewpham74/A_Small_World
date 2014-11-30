@@ -14,7 +14,7 @@ class PagesController < ApplicationController
 # pics from countries they have selected to see
 def  user_profile
   @pins = Pin
-  
+
   if current_user.countries_to_see == "All"
     @pins = @pins.all
   else
@@ -32,10 +32,14 @@ def my_pins
   @my_pins = current_user.pins.paginate(page: params[:page], per_page: 8)
 end
 
-  def america
-  	@pins = Pin.where(continent: "America").paginate(:page => params[:page], :per_page => 8)
+  def north_america
+  	@pins = Pin.where(continent: "North_America").paginate(:page => params[:page], :per_page => 8)
 
   	# render :template => "pages/america"
+  end
+
+  def south_america
+    @pins = Pin.where(continent: "South_America").paginate(:page => params[:page], :per_page => 8)
   end
 
   def europe
@@ -52,10 +56,6 @@ end
 
   def australia
   	@pins = Pin.where(continent: "Australia").paginate(:page => params[:page], :per_page => 8)
-  end
-
-  def antartica
-  	@pins = Pin.where(continent: "Antartica").paginate(:page => params[:page], :per_page => 8)
   end
 
 end

@@ -1,11 +1,11 @@
 <script type="text/javascript">
   $(document).ready(function() {
       $(".user_user_continentname").hide();
-      $("#user_user_continentname_" + $("#user_user_continentname").val()).show();
+      $("#user_user_continentname_" + $("#user_user_continentname").val().replace(/\s/g, '')).show();
 
     $("#user_user_continentname").change(function() {
       $(".user_user_continentname").hide();
-      $("#user_user_continentname_" + $(this).val()).show();
+      $("#user_user_continentname_" + $(this).val().replace(/\s/g, '')).show();
     });
 
     $("#new_user").submit(function() {
@@ -50,8 +50,8 @@
 
    <div class="form-group">
     <div><%= f.label :user_countryname, 'Country' %><br />
-        <div id="user_user_continentname_America" class="user_user_continentname">
-      <%= f.select :user_countryname, AMERICA_COUNTRIES %>
+        <div id="user_user_continentname_NorthAmerica" class="user_user_continentname">
+      <%= f.select :user_countryname, NORTH_AMERICA_COUNTRIES %>
     </div>
 
     <div id="user_user_continentname_Asia" class="user_user_continentname">
@@ -70,8 +70,8 @@
       <%= f.select :user_countryname, AUSTRALIA_COUNTRIES %>
     </div>
 
-    <div id="user_user_continentname_Antarctica" class="user_user_continentname">
-      <%= f.select :user_countryname, ANTARCTICA_COUNTRIES %>
+    <div id="user_user_continentname_SouthAmerica" class="user_user_continentname">
+      <%= f.select :user_countryname, SOUTH_AMERICA_COUNTRIES %>
     </div>
     </div>
     <br>
