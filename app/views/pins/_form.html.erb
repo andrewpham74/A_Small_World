@@ -8,8 +8,18 @@
       $("#pin_continentname_" + $(this).val().replace(/\s/g, '')).show();
     });
 
-    $("#new_pin").submit(function() {
-      $(".pin_continentname:hidden").remove();
+    var programmatic = false;
+
+    $("#new_pin").submit(function(event) {
+      if(!programmatic) {
+        event.preventDefault();
+
+        $(".pin_continentname:hidden").remove();
+
+        programmatic = true;
+
+        $("#new_pin").submit();
+      }
     });
   });
 </script>
