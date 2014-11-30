@@ -79,7 +79,7 @@ Pinteresting::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # require for heroku
-  config.action_mailer.default_url_options = { :host => 'evening-spire-8635.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'theworldnearby.com' }
    
 # Sets paperclip to upload images to Amazon S3   
 config.paperclip_defaults = {
