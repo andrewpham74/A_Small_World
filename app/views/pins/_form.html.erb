@@ -41,37 +41,45 @@
   <div class="form-group">
     <div><%= f.label :country, 'Country' %><br />
         <div id="pin_continentname_America" class="pin_continentname">
-      <%= f.select :country, ['USA'] %>
+      <%= f.select :country, AMERICA_COUNTRIES %>
     </div>
 
     <div id="pin_continentname_Asia" class="pin_continentname">
-      <%= f.select :country, ['China'] %>
+      <%= f.select :country, ASIA_COUNTRIES %>
     </div>
 
     <div id="pin_continentname_Africa" class="pin_continentname">
-      <%= f.select :country, ['Kenya'] %>
+      <%= f.select :country, AFRICA_COUNTRIES %>
     </div>
 
     <div id="pin_continentname_Europe" class="pin_continentname">
-      <%= f.select :country, ['France'] %>
+      <%= f.select :country, EUROPE_COUNTRIES %>
     </div>
 
     <div id="pin_continentname_Australia" class="pin_continentname">
-      <%= f.select :country, ['Queensland'] %>
+      <%= f.select :country, AUSTRALIA_COUNTRIES %>
     </div>
 
     <div id="pin_continentname_Antarctica" class="pin_continentname">
-      <%= f.select :country, ['Antarctica'] %>
+      <%= f.select :country, ANTARCTICA_COUNTRIES %>
     </div>
     <br>
    </div>
   <div class="form-group">
     <div><%= label_tag 'pin[interest_ids][]', 'Interests' %><br />
 
-    <% Interest.order('name ASC').each do |interest| %>
-      <%= check_box_tag 'pin[interest_ids][]', interest.id, @pin.interest_ids.include?(interest.id), id: dom_id(interest) %>
-      <%= label_tag dom_id(interest), interest.name %><br>
-    <% end %>
+    <table>
+      <% Interest.order('name ASC').each_slice(3) do |slice| %>
+        <tr>
+          <% slice.each do |interest| %>
+            <td>
+              <%= check_box_tag 'pin[interest_ids][]', interest.id, @pin.interest_ids.include?(interest.id), id: dom_id(interest) %>
+              <%= label_tag dom_id(interest), interest.name %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
   </div>
 
   <div class="form-group">

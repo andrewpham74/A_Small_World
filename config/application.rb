@@ -26,7 +26,13 @@ module Pinteresting
 end
 
 CONTINENTS = ['America', 'Asia', 'Africa', 'Europe', 'Australia', 'Antarctica']
-COUNTRIES = ["Kenya", "China"]
+AMERICA_COUNTRIES = ['USA']
+AFRICA_COUNTRIES = ['Kenya']
+ASIA_COUNTRIES = ['China']
+ANTARCTICA_COUNTRIES = ['Antarctica']
+EUROPE_COUNTRIES = ['France']
+AUSTRALIA_COUNTRIES = ['Queensland']
+COUNTRIES = AMERICA_COUNTRIES + AFRICA_COUNTRIES + ASIA_COUNTRIES + ANTARCTICA_COUNTRIES + EUROPE_COUNTRIES + AUSTRALIA_COUNTRIES
 INTERESTS = ["Entertainment", "Cooking", "Fruit", "Vegetation", "Animals", "Children", "School", "Education", "Arts", "Music", "Opera", "Design", "Festivals", "Roads", "Highways", "Streets", "Museums", "Business", "Dance", "Theatre", "Painting", "Markets", "Nature", "Religious Sites", "Restaurants", "Foods", "Fashion", "Mountains", "Infrastructure", "Life", "Culture", "Outdoor", "Fishing", "Ocean", "Agriculture", "Industry", "People", "Women", "Men"]
 
 require 'will_paginate/array'
