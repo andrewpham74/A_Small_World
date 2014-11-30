@@ -1,3 +1,19 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".user_user_continentname").hide();
+      $("#user_user_continentname_" + $("#user_user_continentname").val()).show();
+
+    $("#user_user_continentname").change(function() {
+      $(".user_user_continentname").hide();
+      $("#user_user_continentname_" + $(this).val()).show();
+    });
+
+    $("#new_user").submit(function() {
+      $(".user_user_continentname:hidden").remove();
+    });
+  });
+</script>
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -11,7 +27,7 @@
    <div class="form-group">
 
 	  <div><%= f.label :email %><br />
-	  <%= f.email_field :email, :autofocus => true %></div>
+	  <%= f.email_field :email %></div>
    </div>
 
    <div class="form-group">
@@ -26,12 +42,35 @@
 
    <div class="form-group">
     <div><%= f.label :user_continentname, 'Continent' %><br />
-    <%= f.select :user_continentname, ['America', 'Asia', 'Africa', 'Europe', 'Australia', 'Antarctica'] %></div>
+    <%= f.select :user_continentname, CONTINENTS %></div>
    </div>
 
    <div class="form-group">
     <div><%= f.label :user_countryname, 'Country' %><br />
-    <%= f.text_field :user_countryname %></div>
+        <div id="user_user_continentname_America" class="user_user_continentname">
+      <%= f.select :user_countryname, ['USA'] %>
+    </div>
+
+    <div id="user_user_continentname_Asia" class="user_user_continentname">
+      <%= f.select :user_countryname, ['China'] %>
+    </div>
+
+    <div id="user_user_continentname_Africa" class="user_user_continentname">
+      <%= f.select :user_countryname, ['Kenya'] %>
+    </div>
+
+    <div id="user_user_continentname_Europe" class="user_user_continentname">
+      <%= f.select :user_countryname, ['France'] %>
+    </div>
+
+    <div id="user_user_continentname_Australia" class="user_user_continentname">
+      <%= f.select :user_countryname, ['Queensland'] %>
+    </div>
+
+    <div id="user_user_continentname_Antarctica" class="user_user_continentname">
+      <%= f.select :user_countryname, ['Antarctica'] %>
+    </div>
+    <br>
    </div>
 
    <div class="form-group">
@@ -40,17 +79,29 @@
    </div>
 
    <div class="form-group">
-    <div><%= f.label :user_interest, 'Interest' %><br />
-    <%= f.text_field :user_interest, class: "form-control" %></div>
+    <div><%= label_tag 'user[interest_ids][]', 'Interests' %><br />
+
+    <% Interest.order('name ASC').each do |interest| %>
+      <%= check_box_tag 'user[interest_ids][]', interest.id, resource.interest_ids.include?(interest.id), id: dom_id(interest) %>
+      <%= label_tag dom_id(interest), interest.name %><br>
+    <% end %>
+    </div>
    </div>
 
       <div class="form-group">
     <div><%= f.label :countries_to_see, 'Countries interested in' %><br />
-    <%= f.text_field :countries_to_see, class: "form-control" %></div>
+
+    <%= check_box_tag 'user[countries_to_see][]', 'All', resource.countries_to_see ? resource.countries_to_see.include?('All') : false, id: 'All' %>
+    <%= label_tag 'All', 'All' %><br>
+    <% COUNTRIES.sort.each do |country| %>
+      <%= check_box_tag 'user[countries_to_see][]', country, resource.countries_to_see ? resource.countries_to_see.include?(country) : false, id: country %>
+      <%= label_tag country, country %><br>
+    <% end %>
+    </div>
    </div>
 
   <div>
-    <small class="x-small">By signing up, I accept A_Small_World's <%= link_to 'Terms of Use', termsofservice_path, target: '_blank' %>and<%= link_to 'Privacy Policy', privacypolicy_path, target: '_blank' %>.</small>
+    <small class="x-small">By signing up, I accept A Small World's <%= link_to 'Terms of Use', termsofservice_path, target: '_blank' %>and<%= link_to 'Privacy Policy', privacypolicy_path, target: '_blank' %>.</small>
   </div>
 
   <div><%= f.submit "Sign up" %></div>

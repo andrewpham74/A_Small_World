@@ -24,3 +24,9 @@ module Pinteresting
     config.assets.initialize_on_precompile = false
   end
 end
+
+CONTINENTS = ['America', 'Asia', 'Africa', 'Europe', 'Australia', 'Antarctica']
+COUNTRIES = ["Kenya", "China"]
+INTERESTS = ["Entertainment", "Cooking", "Fruit", "Vegetation", "Animals", "Children", "School", "Education", "Arts", "Music", "Opera", "Design", "Festivals", "Roads", "Highways", "Streets", "Museums", "Business", "Dance", "Theatre", "Painting", "Markets", "Nature", "Religious Sites", "Restaurants", "Foods", "Fashion", "Mountains", "Infrastructure", "Life", "Culture", "Outdoor", "Fishing", "Ocean", "Agriculture", "Industry", "People", "Women", "Men"]
+
+require 'will_paginate/array'

@@ -12,7 +12,14 @@ protected
    devise_parameter_sanitizer.for(:sign_up) << :user_continentname
    devise_parameter_sanitizer.for(:sign_up) << :user_city
    devise_parameter_sanitizer.for(:sign_up) << :user_interest
-   devise_parameter_sanitizer.for(:sign_up) << :countries_to_see
+   devise_parameter_sanitizer.for(:sign_up) << { countries_to_see: [] }
+   devise_parameter_sanitizer.for(:sign_up) << { interest_ids: [] }
    devise_parameter_sanitizer.for(:account_update) << :name
+   devise_parameter_sanitizer.for(:account_update) << :user_countryname
+   devise_parameter_sanitizer.for(:account_update) << :user_continentname
+   devise_parameter_sanitizer.for(:account_update) << :user_city
+   devise_parameter_sanitizer.for(:account_update) << :user_interest
+   devise_parameter_sanitizer.for(:account_update) << { countries_to_see: [] }
+   devise_parameter_sanitizer.for(:account_update) << { interest_ids: [] }
  end
 end

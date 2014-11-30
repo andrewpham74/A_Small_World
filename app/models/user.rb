@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :pins
+  has_many :interestizations
+  has_many :interests, through: :interestizations
+
+  serialize :countries_to_see
 
   def first_name
   	name.split(' ').first

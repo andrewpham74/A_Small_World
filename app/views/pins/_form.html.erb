@@ -1,3 +1,19 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".pin_continentname").hide();
+      $("#pin_continentname_" + $("#pin_continent").val()).show();
+
+    $("#pin_continent").change(function() {
+      $(".pin_continentname").hide();
+      $("#pin_continentname_" + $(this).val()).show();
+    });
+
+    $("#new_pin").submit(function() {
+      $(".pin_continentname:hidden").remove();
+    });
+  });
+</script>
+
 <%= form_for @pin, html:{multipart: true} do |f| %>
   <% if @pin.errors.any? %>
     <div id="error_explanation">
@@ -20,15 +36,42 @@
   </div>
    <div class="form-group">
     <%= f.label :continent %><br>
-    <%= f.text_field :continent, class: "form-control" %>
+    <%= f.select :continent, CONTINENTS %>
   </div>
-   <div class="form-group">
-    <%= f.label :country %><br>
-    <%= f.text_field :country, class: "form-control" %>
-  </div>
-   <div class="form-group">
-    <%= f.label :interest %><br>
-    <%= f.text_field :interest, class: "form-control" %>
+  <div class="form-group">
+    <div><%= f.label :country, 'Country' %><br />
+        <div id="pin_continentname_America" class="pin_continentname">
+      <%= f.select :country, ['USA'] %>
+    </div>
+
+    <div id="pin_continentname_Asia" class="pin_continentname">
+      <%= f.select :country, ['China'] %>
+    </div>
+
+    <div id="pin_continentname_Africa" class="pin_continentname">
+      <%= f.select :country, ['Kenya'] %>
+    </div>
+
+    <div id="pin_continentname_Europe" class="pin_continentname">
+      <%= f.select :country, ['France'] %>
+    </div>
+
+    <div id="pin_continentname_Australia" class="pin_continentname">
+      <%= f.select :country, ['Queensland'] %>
+    </div>
+
+    <div id="pin_continentname_Antarctica" class="pin_continentname">
+      <%= f.select :country, ['Antarctica'] %>
+    </div>
+    <br>
+   </div>
+  <div class="form-group">
+    <div><%= label_tag 'pin[interest_ids][]', 'Interests' %><br />
+
+    <% Interest.order('name ASC').each do |interest| %>
+      <%= check_box_tag 'pin[interest_ids][]', interest.id, @pin.interest_ids.include?(interest.id), id: dom_id(interest) %>
+      <%= label_tag dom_id(interest), interest.name %><br>
+    <% end %>
   </div>
 
   <div class="form-group">

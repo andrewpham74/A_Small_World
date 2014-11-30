@@ -1,32 +1,108 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".user_user_continentname").hide();
+      $("#user_user_continentname_" + $("#user_user_continentname").val()).show();
+
+    $("#user_user_continentname").change(function() {
+      $(".user_user_continentname").hide();
+      $("#user_user_continentname_" + $(this).val()).show();
+    });
+
+    $("#new_user").submit(function() {
+      $(".user_user_continentname:hidden").remove();
+    });
+  });
+</script>
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-      <div class="form-group">
-       <%= f.label :name %>
-       <%= f.text_field :name, class: "form-control", :autofocus => true %>
-     </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", :autofocus => true %>
+  </div>
 
-   <div class="form-group">
-      <div><%= f.label :email %><br />
-      <%= f.email_field :email, :autofocus => true %></div>
-   </div>
-
+  <div class="form-group">
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email, :autofocus => true %></div>
+  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="form-group">
-  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %>
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, :autocomplete => "off" %>
   </div>
 
   <div class="form-group">
-  <%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
   </div>
+
+  <div class="form-group">
+    <div><%= f.label :user_continentname, 'Continent' %><br />
+    <%= f.select :user_continentname, CONTINENTS %></div>
+  </div>
+
+   <div class="form-group">
+    <div><%= f.label :user_countryname, 'Country' %><br />
+        <div id="user_user_continentname_America" class="user_user_continentname">
+      <%= f.select :user_countryname, ['USA'] %>
+    </div>
+
+    <div id="user_user_continentname_Asia" class="user_user_continentname">
+      <%= f.select :user_countryname, ['China'] %>
+    </div>
+
+    <div id="user_user_continentname_Africa" class="user_user_continentname">
+      <%= f.select :user_countryname, ['Kenya'] %>
+    </div>
+
+    <div id="user_user_continentname_Europe" class="user_user_continentname">
+      <%= f.select :user_countryname, ['France'] %>
+    </div>
+
+    <div id="user_user_continentname_Australia" class="user_user_continentname">
+      <%= f.select :user_countryname, ['Queensland'] %>
+    </div>
+
+    <div id="user_user_continentname_Antarctica" class="user_user_continentname">
+      <%= f.select :user_countryname, ['Antarctica'] %>
+    </div>
+    </div>
+    <br>
+   </div>
+
+   <div class="form-group">
+    <div><%= f.label :user_city, 'City' %><br />
+    <%= f.text_field :user_city %></div>
+   </div>
+
+   <div class="form-group">
+    <div><%= label_tag 'user[interest_ids][]', 'Interests' %><br />
+
+    <% Interest.order('name ASC').each do |interest| %>
+      <%= check_box_tag 'user[interest_ids][]', interest.id, resource.interest_ids.include?(interest.id), id: dom_id(interest) %>
+      <%= label_tag dom_id(interest), interest.name %><br>
+    <% end %>
+    </div>
+   </div>
+
+      <div class="form-group">
+    <div><%= f.label :countries_to_see, 'Countries interested in' %><br />
+
+    <%= check_box_tag 'user[countries_to_see][]', 'All', resource.countries_to_see.include?('All'), id: 'All' %>
+    <%= label_tag 'All', 'All' %><br>
+    <% COUNTRIES.sort.each do |country| %>
+      <%= check_box_tag 'user[countries_to_see][]', country, resource.countries_to_see.include?(country), id: country %>
+      <%= label_tag country, country %><br>
+    <% end %>
+    </div>
+   </div>
 
   <div class="form-group">>
   <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />

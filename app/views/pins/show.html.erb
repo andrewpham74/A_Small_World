@@ -11,7 +11,15 @@
 			     <p><%= @pin.description %></p>
 			     <p><%= @pin.continent %></p>
                  <p><%= @pin.country %></p>
-                 <p><%= @pin.interest %></p>
+                 <p>
+                 	<strong>Interests</strong>
+
+                 	<ul>
+                 		<% @pin.interests.each do |interest| %>
+                 			<li><%= interest.name %></li>
+                 		<% end %>
+                 	</ul>
+                 </p>
 				 <p><strong><%= @pin.user.name if @pin.user %></strong></p>
 
 						 <% if @pin.user == current_user %>

@@ -13,7 +13,19 @@ class PagesController < ApplicationController
 # new userprofile controller to display user profile + the pics he or she uploaded on the left and 
 # pics from countries they have selected to see
 def  user_profile
-  @country_and_interest_pins = Pin.where("country = ? OR interest = ?", current_user.countries_to_see, current_user.user_interest).paginate(:page => params[:page], :per_page => 8)
+  @pins = Pin
+  
+  if current_user.countries_to_see == "All"
+    @pins = @pins.all
+  else
+    @pins = @pins.where("country IN (?)", current_user.countries_to_see)
+  end
+
+  if current_user.interest_ids.any?
+    @pins = @pins.select {|pin| (current_user.interest_ids & pin.interest_ids).any? }
+  end
+
+  @country_and_interest_pins = @pins.paginate(:page => params[:page], :per_page => 8)
 end
 
 def my_pins
