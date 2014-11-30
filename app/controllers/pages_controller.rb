@@ -15,14 +15,14 @@ class PagesController < ApplicationController
 def  user_profile
   @pins = Pin
 
-  if current_user.countries_to_see == "All"
+  if current_user.countries_to_see.include?("All")
     @pins = @pins.all
   else
     @pins = @pins.where("country IN (?)", current_user.countries_to_see)
   end
 
   if current_user.interest_ids.any?
-    @pins = @pins.select {|pin| (current_user.interest_ids & pin.interest_ids).any? }
+    @pins += @pins.select {|pin| (current_user.interest_ids & pin.interest_ids).any? }
   end
 
   @country_and_interest_pins = @pins.paginate(:page => params[:page], :per_page => 8)
