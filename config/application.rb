@@ -26,10 +26,10 @@ module Pinteresting
 end
 
 CONTINENTS = ['North America', 'South America','Asia', 'Africa', 'Europe', 'Australia']
-NORTH_AMERICA_COUNTRIES = ['USA', 'Canada', ]
-SOUTH_AMERICA_COUNTRIES = ['Argentina', 'Chile', 'Paragua']
+NORTH_AMERICA_COUNTRIES = ['Antigua & Barbuda', 'Bahamas', 'Barbados', 'Belize', 'Canada', 'Costa Rica', 'Cuba', 'Dominica', 'Dominican Republic','El Salvador', 'Grenada', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 'Panama', 'St. Kitts & Nevis', 'St. Lucia', 'St. Vincent & The Grenadines', 'Trinidad & Tobago', 'United States of America']
+SOUTH_AMERICA_COUNTRIES = ['Argentina', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
 AFRICA_COUNTRIES = ['Kenya', 'Nigeria', 'South Africa']
-ASIA_COUNTRIES = ['China', 'Thailand', 'Laos']
+ASIA_COUNTRIES = ['Afghanistan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei', 'Cambodia', 'China', 'East Timor', 'India', 'Indonesia', 'Iran', 'Iraq', 'Israel', 'Japan', 'Jordan', 'Kazakhstan', 'Korea North', 'Korea South', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Malaysia', 'Maldives', 'Mongolia', 'Myanmar (Burma)', 'Nepal', 'Oman', 'Pakistan', 'The Philippines', 'Qatar', 'Russia', 'Saudi Arabia', 'Singapore', 'Sri Lanka', 'Syria', 'Taiwan', 'Tajikistan', 'Thailand', 'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Vietnam', 'Yemen']
 EUROPE_COUNTRIES = ['France', 'Germany', 'UK', 'Belgimun']
 AUSTRALIA_COUNTRIES = ['Australia']
 COUNTRIES = NORTH_AMERICA_COUNTRIES + SOUTH_AMERICA_COUNTRIES + AFRICA_COUNTRIES + ASIA_COUNTRIES + EUROPE_COUNTRIES + AUSTRALIA_COUNTRIES
