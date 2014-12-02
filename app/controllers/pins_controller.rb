@@ -3,7 +3,15 @@ class PinsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    if params[:continent]
+      @pins = Pin.where(continent: params[:continent]).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    else
+      @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    end
+  end
+
+  def selection
+    @pins = Pin.where(continent: params[:continent], interest: params[:interest], country: params[:country]).paginate(:page => params[:page], :per_page => 8)
   end
 
   # GET /pins/1

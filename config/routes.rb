@@ -20,6 +20,8 @@ Pinteresting::Application.routes.draw do
  # to display the terms of service and private policy
  get "america" => "pages#america"
 
+ get "selection" => "pins#selection"
+
   get "termsofservice" => "pages#terms_of_service"
   get "privacypolicy" => "pages#privacy_policy"
 
