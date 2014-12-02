@@ -86,11 +86,11 @@
     <div><%= label_tag 'user[interest_ids][]', 'Interests' %><br />
 
     <table>
-    <% Interest.order('name ASC').each_slice(3) do |slice| %>
+    <% Interest.order('name ASC').each_slice(13) do |slice| %>
       <tr>
         <% slice.each do |interest| %>
           <td>
-            <%= check_box_tag 'user[interest_ids][]', interest.id, resource.interest_ids.include?(interest.id), id: dom_id(interest) %>
+            <%= check_box_tag 'user[interest_ids][]', interest.id, resource.interest_ids ? resource.interest_ids.include?(interest.id) : false, id: dom_id(interest) %>
             <%= label_tag dom_id(interest), interest.name %>
           </td>
         <% end %>
@@ -103,10 +103,10 @@
       <div class="form-group">
     <div><%= f.label :countries_to_see, 'Countries interested in' %><br />
 
-    <%= check_box_tag 'user[countries_to_see][]', 'All', resource.countries_to_see.include?('All'), id: 'All' %>
+    <%= check_box_tag 'user[countries_to_see][]', 'All', resource.countries_to_see ? resource.countries_to_see.include?('All') : false, id: 'All' %>
     <%= label_tag 'All', 'All' %><br>
     <table>
-    <% COUNTRIES.sort.each_slice(3) do |slice| %>
+    <% COUNTRIES.sort.each_slice(5) do |slice| %>
       <tr>
         <% slice.each do |country| %>
           <td>

@@ -1,6 +1,6 @@
 <h1>Australia</h1>
 
-<div id="pins" class="transitions-enabled">
+<div class="pins transitions-enabled">
   <% @pins.each do |pin| %>
       <div class="box panel panel-default">
         <%= link_to image_tag(pin.image.url(:medium)), pin %>

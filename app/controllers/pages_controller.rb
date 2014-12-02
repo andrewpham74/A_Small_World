@@ -34,13 +34,13 @@ def my_pins
 end
 
   def north_america
-  	@pins = Pin.where(continent: "North_America").paginate(:page => params[:page], :per_page => 8)
+  	@pins = Pin.where(continent: "North America").paginate(:page => params[:page], :per_page => 8)
 
   	# render :template => "pages/america"
   end
 
   def south_america
-    @pins = Pin.where(continent: "South_America").paginate(:page => params[:page], :per_page => 8)
+    @pins = Pin.where(continent: "South America").paginate(:page => params[:page], :per_page => 8)
   end
 
   def europe

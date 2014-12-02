@@ -1,5 +1,6 @@
 <%= render 'pages/home' unless user_signed_in? %>
 
+<div class="container">
 <div class="pins transitions-enabled">
   <% @pins.each do |pin| %>
       <div class="box panel panel-default">
@@ -39,4 +40,5 @@
 </div>
 <div class=center>
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
 </div>
