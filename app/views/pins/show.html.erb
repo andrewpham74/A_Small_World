@@ -22,7 +22,7 @@
                  </p>
 				 <p><strong><%= @pin.user.name if @pin.user %></strong></p>
 
-						 <% if @pin.user == current_user %>
+            <% if @pin.user == current_user or current_user.try(:admin?) %>
 						 <%= link_to edit_pin_path(@pin) do %> 
 						  <span class="glyphicon glyphicon-edit"></span>
 						   Edit

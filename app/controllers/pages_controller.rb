@@ -25,7 +25,7 @@ def  user_profile
   if current_user.interest_ids.any?
     @pins += @pins.select {|pin| (current_user.interest_ids & pin.interest_ids).any? }
   end
-
+  @pins=@pins-current_user.pins
   @country_and_interest_pins = @pins.paginate(:page => params[:page], :per_page => 8)
 end
 
