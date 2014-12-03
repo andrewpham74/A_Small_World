@@ -26,6 +26,7 @@
   });
 </script>
 
+<% if user_signed_in? %>
 <%= form_tag pins_path, method: :get, id: 'search' do %>
   <%= select_tag :continent, options_for_select(CONTINENTS, params[:continent]) %>
 
@@ -62,6 +63,7 @@
   <%= submit_tag 'Search' %>
 
   <%= link_to 'Clear search', pins_path %>
+<% end %>
 <% end %>
 
 <div class="pins transitions-enabled">
@@ -101,7 +103,7 @@
       </div>
   <% end %>
 </div>
-  <div class=center>
+  <div class="center">
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
   </div>
 </div>
