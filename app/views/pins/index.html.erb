@@ -1,9 +1,67 @@
 <%= render 'pages/home' unless user_signed_in? %>
 
-<%= form_tag pins_path, method: :get do %>
-  <%= select_tag :continent, options_for_select(CONTINENTS) %>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".pin_continentname").hide();
+      $("#pin_continentname_" + $("#continent").val().replace(/\s/g, '')).show();
 
+    $("#continent").change(function() {
+      $(".pin_continentname").hide();
+      $("#pin_continentname_" + $(this).val().replace(/\s/g, '')).show();
+    });
+
+    var programmatic = false;
+
+    $("#search").submit(function(event) {
+      if(!programmatic) {
+        event.preventDefault();
+
+        $(".pin_continentname:hidden").remove();
+
+        programmatic = true;
+
+        $("#search").submit();
+      }
+    });
+  });
+</script>
+
+<%= form_tag pins_path, method: :get, id: 'search' do %>
+  <%= select_tag :continent, options_for_select(CONTINENTS, params[:continent]) %>
+
+  <span id="pin_continentname_NorthAmerica" class="pin_continentname">
+    <%= select_tag :country, options_for_select(NORTH_AMERICA_COUNTRIES.clone << 'All', params[:country]) %>
+  </span>
+
+
+  <span id="pin_continentname_SouthAmerica" class="pin_continentname">
+    <%= select_tag :country, options_for_select(SOUTH_AMERICA_COUNTRIES.clone << 'All', params[:country]) %>
+  </span>
+
+
+  <span id="pin_continentname_Asia" class="pin_continentname">
+    <%= select_tag :country, options_for_select(ASIA_COUNTRIES.clone << 'All', params[:country]) %>
+  </span>
+
+  <span id="pin_continentname_Africa" class="pin_continentname">
+    <%= select_tag :country, options_for_select(AFRICA_COUNTRIES.clone << 'All', params[:country]) %>
+  </span>
+
+
+  <span id="pin_continentname_Europe" class="pin_continentname">
+    <%= select_tag :country, options_for_select(EUROPE_COUNTRIES.clone << 'All', params[:country]) %>
+  </span>
+
+
+  <span id="pin_continentname_Australia" class="pin_continentname">
+    <%= select_tag :country, options_for_select(AUSTRALIA_COUNTRIES.clone << 'All', params[:country]) %>
+  </span>
+
+  <%= select_tag :interest, options_for_select(INTERESTS), prompt: 'Select an interest' %>
+   
   <%= submit_tag 'Search' %>
+
+  <%= link_to 'Clear search', pins_path %>
 <% end %>
 
 <div class="pins transitions-enabled">
