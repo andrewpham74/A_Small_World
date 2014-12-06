@@ -10,4 +10,12 @@ class Pin < ActiveRecord::Base
     
   has_many :interestizations
   has_many :interests, through: :interestizations
+
+  def image_url
+  	self.image.url
+  end
+
+  def as_json(options = {})
+  	super(options.merge(methods: [:image_url]))
+  end
 end
