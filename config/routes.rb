@@ -2,6 +2,8 @@ Pinteresting::Application.routes.draw do
   resources :pins
 
   devise_for :users
+  post 'customusers' => 'users#create'
+  resources :user_sessions, only: [:create]
   root "pins#index"
   get "about" => "pages#about"
 

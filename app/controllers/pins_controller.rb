@@ -51,11 +51,18 @@ class PinsController < ApplicationController
   # POST /pins.json
   def create
     @pin = current_user.pins.build(pin_params)
-      if @pin.save
-        redirect_to @pin, notice: 'Pin was successfully created.' 
-      else
-        render action: 'new' 
+
+    if @pin.save
+      respond_to do |format|
+        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
+        format.json { render json: @pin }
       end
+    else
+      respond_to do |format|
+        format.html { render action: 'new' }
+        format.json { render json: { errors: @pin.errors } }
+      end
+    end
   end
 
   # PATCH/PUT /pins/1
