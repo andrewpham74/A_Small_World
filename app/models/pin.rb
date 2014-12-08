@@ -5,8 +5,8 @@ class Pin < ActiveRecord::Base
 
     validates :image, presence: true
     validates :description, presence: true
-    validates :continent, presence: true
-    validates :country, presence: true
+    # validates :continent, presence: true
+    # validates :country, presence: true
     
   has_many :interestizations
   has_many :interests, through: :interestizations
