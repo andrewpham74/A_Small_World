@@ -9,6 +9,7 @@
 				<button style="border: none; background-color: #fff; padding: 0;"><%= image_tag image.url.to_s %></button>
 
 				<%= hidden_field_tag 'pin[image_url]', image.url.to_s %>
+				<%= hidden_field_tag 'pin[source]', params[:link] %>
 			<% end %>
 		</div>
 	<% end %>

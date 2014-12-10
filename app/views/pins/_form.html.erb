@@ -41,7 +41,7 @@
 
     <% if params[:pin] and params[:pin][:image_url] %>
       <%= hidden_field_tag 'pin[image_url]', params[:pin][:image_url] %>
-      <%= hidden_field_tag 'pin[source]', params[:pin][:image_url] %>
+      <%= hidden_field_tag 'pin[source]', params[:pin][:source] %>
 
       <%= image_tag params[:pin][:image_url] %>
     <% else %>
