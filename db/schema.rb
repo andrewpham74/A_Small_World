@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130033534) do
+ActiveRecord::Schema.define(version: 20141210005812) do
 
   create_table "interestizations", force: true do |t|
     t.integer  "interest_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20141130033534) do
     t.string   "continent"
     t.string   "country"
     t.string   "interest"
+    t.text     "source"
   end
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"

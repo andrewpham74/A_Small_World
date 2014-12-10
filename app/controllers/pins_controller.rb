@@ -40,9 +40,29 @@ class PinsController < ApplicationController
   def show
   end
 
+  def select_mode  
+  end
+
+  def select_picture
+    agent = Mechanize.new
+
+    begin
+      page = agent.get(params[:link])
+
+      @images = page.images
+    rescue
+      flash[:notice] = 'Please submit a valid link including http or https'
+
+      render :new_pin_web
+    end
+  end
+
   # GET /pins/new
   def new
     @pin = current_user.pins.build
+  end
+
+  def new_pin_web
   end
 
   # GET /pins/1/edit
@@ -99,6 +119,6 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description, :image, :country, :continent, :interest, interest_ids: [])
+      params.require(:pin).permit(:description, :image, :image_url, :country, :continent, :interest, interest_ids: [])
     end
 end

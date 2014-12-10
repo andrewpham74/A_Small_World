@@ -1,0 +1,15 @@
+<h1>Select picture</h1>
+
+<br>
+
+<div class="pins">
+	<% @images.each do |image| %>
+		<div class="box panel panel-default">
+			<%= form_tag new_pin_path, method: :get do %>
+				<button style="border: none; background-color: #fff; padding: 0;"><%= image_tag image.url.to_s %></button>
+
+				<%= hidden_field_tag 'pin[image_url]', image.url.to_s %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

@@ -19,6 +19,10 @@ class Pin < ActiveRecord::Base
   	self.user.name
   end
 
+  def image_url=(url)
+    self.image = open(url)
+  end
+
   def as_json(options = {})
   	super(options.merge(methods: [:image_url, :username]))
   end

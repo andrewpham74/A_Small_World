@@ -1,5 +1,11 @@
 Pinteresting::Application.routes.draw do
-  resources :pins
+  resources :pins do
+    collection do
+      get 'select_mode'
+      get 'select_picture'
+      get 'new_pin_web'
+    end
+  end
 
   devise_for :users
   post 'customusers' => 'users#create'
