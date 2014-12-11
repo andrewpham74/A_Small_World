@@ -17,10 +17,12 @@ gem 'masonry-rails', '~>0.2.0'
 gem 'will_paginate', '~>3.0'
 gem 'will_paginate-bootstrap'
 gem 'mechanize'
+gem 'unicorn'
 
 group :development, :test do
 gem 'sqlite3'
 gem 'mailcatcher'
+gem 'foreman'
 end
 
 group :production do
