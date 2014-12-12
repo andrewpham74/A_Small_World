@@ -1,0 +1,19 @@
+<h1>Video Purchasing</h1>
+
+<% if current_user and current_user.admin? %>
+	<%= link_to 'Add product', new_product_path %>
+<% end %>
+
+<% @products.each do |product| %>
+	<h2><%= link_to product.name, product %></h2>
+
+	<p>
+		<%= product.description %>
+	</p>
+
+	<p>
+		<strong><%= number_to_currency product.price_in_cents / 100 %></strong>
+	</p>
+
+
+<% end %>

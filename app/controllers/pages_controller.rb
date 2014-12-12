@@ -59,4 +59,8 @@ end
   	@pins = Pin.where(continent: "Australia").paginate(:page => params[:page], :per_page => 8)
   end
 
+  def video_purchasing
+    @products = Product.all
+  end
+
 end

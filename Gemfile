@@ -18,6 +18,8 @@ gem 'will_paginate', '~>3.0'
 gem 'will_paginate-bootstrap'
 gem 'mechanize'
 gem 'unicorn'
+# Use stripe for e-commerce payments
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do
 gem 'sqlite3'

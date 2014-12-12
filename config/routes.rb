@@ -13,6 +13,10 @@ Pinteresting::Application.routes.draw do
   root "pins#index"
   get "about" => "pages#about"
 
+  resources :charges, only: [:create]
+  resources :purchases, only: [:show]
+  resources :products, only: [:show, :new, :create, :edit, :update, :destroy]
+
   # new pages
   get "north_america" => "pages#north_america"
   get "europe" => "pages#europe"
@@ -20,6 +24,7 @@ Pinteresting::Application.routes.draw do
   get "asia" => "pages#asia"
   get "australia" => "pages#australia"
   get "south_america" => "pages#south_america"
+  get 'video_purchasing' => 'pages#video_purchasing'
 
  # to display the pins upon user's signing in
   get "login" => "pages#user_profile"

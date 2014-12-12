@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :pins
   has_many :interestizations
   has_many :interests, through: :interestizations
+  has_many :purchases
 
   serialize :countries_to_see
 
