@@ -1,0 +1,31 @@
+<h1><%= @post.title %></h1>
+
+<p>
+	<%= @post.body %>
+</p>
+
+<h2>Comments</h2>
+
+<% @post.comments.order('created_at DESC').each do |comment| %>
+	<p>
+		<strong><%= comment.user.name %></strong><br>
+		<%= comment.body %>
+	</p>
+<% end %>
+
+<% if current_user %>
+<h3>Add a comment</h3>
+
+<%= form_for [@post, @post.comments.build] do |f| %>
+	<p>
+		<%= f.label :body %><br>
+		<%= f.text_area :body, rows: 5, cols: 50 %>
+	</p>
+
+	<%= f.submit 'Add comment' %>
+<% end %>
+<% else %>
+	<p>
+		Please <%= link_to 'sign in', sign_in_path %> to add a comment
+	</p>
+<% end %>

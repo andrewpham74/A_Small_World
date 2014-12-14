@@ -19,7 +19,7 @@ gem 'will_paginate-bootstrap'
 gem 'mechanize'
 gem 'unicorn'
 # Use stripe for e-commerce payments
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe'
 
 group :development, :test do
 gem 'sqlite3'
@@ -38,3 +38,6 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+# Add letter opener for handling emails in development
+gem 'letter_opener', group: :development

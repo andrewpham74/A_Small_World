@@ -30,7 +30,6 @@ Pinteresting::Application.configure do
   # require for heroku
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
-
+  # Send emails using letter opener in dev mode to open emails in a browser
+  config.action_mailer.delivery_method = :letter_opener
 end

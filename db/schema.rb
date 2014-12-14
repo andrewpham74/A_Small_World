@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212054148) do
+ActiveRecord::Schema.define(version: 20141214020428) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "interestizations", force: true do |t|
     t.integer  "interest_id"
@@ -46,6 +54,14 @@ ActiveRecord::Schema.define(version: 20141212054148) do
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
 
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -53,6 +69,10 @@ ActiveRecord::Schema.define(version: 20141212054148) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "download_url"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "purchases", force: true do |t|

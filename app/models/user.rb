@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :interestizations
   has_many :interests, through: :interestizations
   has_many :purchases
+  has_many :posts
+   has_many :comments
 
   serialize :countries_to_see
 
