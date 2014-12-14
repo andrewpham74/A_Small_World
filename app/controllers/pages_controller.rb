@@ -30,7 +30,7 @@ def  user_profile
 end
 
 def my_pins
-  @my_pins = current_user.pins.paginate(page: params[:page], per_page: 8)
+  @my_pins = current_user.pins.order('created_at DESC').paginate(page: params[:page], per_page: 8)
 end
 
   def north_america
