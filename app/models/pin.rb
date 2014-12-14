@@ -23,6 +23,14 @@ class Pin < ActiveRecord::Base
     self.image = open(url)
   end
 
+  def sanitized_source
+    if self.source
+      url = URI.parse(self.source)
+
+      url.host
+    end
+  end
+
   def as_json(options = {})
   	super(options.merge(methods: [:image_url, :username]))
   end

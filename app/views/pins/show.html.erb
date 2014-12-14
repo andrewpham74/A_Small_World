@@ -23,7 +23,7 @@
 				 <p><strong><%= @pin.user.name if @pin.user %></strong></p>
 				 <% if @pin.source %>
 				 <p>
-				 	<strong>From:</strong> <%= link_to @pin.source, @pin.source %>
+				 	<strong>From:</strong> <%= link_to @pin.sanitized_source, @pin.source %>
 				 </p>
 				 <% end %>
 

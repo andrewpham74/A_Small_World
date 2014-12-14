@@ -85,6 +85,12 @@
          </p>
             
             <p><strong><%= pin.user.name if pin.user %></strong></p>
+
+         <% if pin.source.present? %>
+          <p>
+            <strong>From:</strong> <%= link_to pin.sanitized_source, pin.source %>
+          </p>
+         <% end %>
             
             <% if pin.user == current_user or current_user.try(:admin?) %>
               <div class="actions">
