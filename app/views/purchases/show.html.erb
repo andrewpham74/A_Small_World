@@ -12,11 +12,13 @@
           <%= number_to_currency @product.price_in_cents / 100 %>
         </div>
       </div>
-
-      <a href="<%= @product.download_url %>"><button type="button" class="btn btn-success btn-xs">DOWNLOAD</button></a>
-      <footer id="receipt-footer">
-        <small>Your purchase is complete. We hope you enjoy it!</small>
+       <footer id="receipt-footer">
+        <small>Your purchase is now complete. An email confirmation has been sent to your email address. We hope you enjoy it!</small>
       </footer>
+      <br>
+
+      <a href="<%= @product.download_url %>"><button type="button" class="btn btn-success btn-xs">DOWNLOAD VIDEO</button></a>
+     
     </div>
     <div class="dotmatrix right"></div>
   </div>
