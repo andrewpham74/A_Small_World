@@ -1,12 +1,8 @@
-<% if current_user and current_user.admin? %>
-
-
 <div class="mainBlog">
 
 <p>
   <%= link_to 'New post', new_post_path %>
 </p>
-<% end %>
 
 <% @posts.each do |post| %>
   <h2><%= link_to post.title, post %></h2>

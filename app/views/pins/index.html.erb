@@ -58,7 +58,7 @@
     <%= select_tag :country, options_for_select(AUSTRALIA_COUNTRIES.clone << 'All', params[:country]) %>
   </span>
 
-  <%= select_tag :interest, options_for_select(INTERESTS), prompt: 'Select an interest' %>
+  <%= select_tag :interest, options_for_select(INTERESTS.sort.clone << 'All', params[:interest]), prompt: 'Select an interest' %>
    
   <%= submit_tag 'Search' %>
 

@@ -1,5 +1,15 @@
 <h1>Africa</h1>
 
+<%= form_tag africa_path, method: :get, id: 'search' do %>
+  <%= select_tag :country, options_for_select(AFRICA_COUNTRIES.clone << 'All', params[:country]) %>
+
+  <%= select_tag :interest, options_for_select(INTERESTS.sort.clone << 'All', params[:interest]), prompt: 'Select an interest' %>
+   
+  <%= submit_tag 'Search' %>
+
+  <%= link_to 'Clear search', africa_path %>
+<% end %>
+
 <div class="pins transitions-enabled">
   <% @pins.each do |pin| %>
       <div class="box panel panel-default">
@@ -8,9 +18,23 @@
          <p><%= pin.description %></p>
          <p><%= pin.continent %></p>
          <p><%= pin.country %></p>
-         <p><%= pin.interest %></p>
+         <p>
+          <strong>Interests</strong>
+
+          <ul>
+            <% pin.interests.each do |interest| %>
+              <li><%= interest.name %></li>
+            <% end %>
+          </ul>
+         </p>
             
             <p><strong><%= pin.user.name if pin.user %></strong></p>
+
+         <% if pin.source.present? %>
+          <p>
+            <strong>From:</strong> <%= link_to pin.sanitized_source, pin.source %>
+          </p>
+         <% end %>
             
             <% if pin.user == current_user or current_user.try(:admin?) %>
               <div class="actions">
@@ -29,6 +53,7 @@
       </div>
   <% end %>
 </div>
-<div class=center>
-<%= will_paginate @pins, renderer: BootstrapPagination::Rails %>
+  <div class="center">
+  <%= will_paginate @pins, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>

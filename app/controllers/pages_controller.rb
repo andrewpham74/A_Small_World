@@ -34,29 +34,111 @@ def my_pins
 end
 
   def north_america
-  	@pins = Pin.where(continent: "North America").paginate(:page => params[:page], :per_page => 8)
+    if params[:country] or params[:interests]
+      @pins = Pin.where(continent: "North America")
 
-  	# render :template => "pages/america"
+      if params[:country].present? and params[:country] != 'All'
+        @pins = @pins.where(country: params[:country])
+      end
+
+      if params[:interest].present? and params[:interest] != 'All'
+        @pins = @pins.joins(:interests).where(interests: { name: params[:interest] })
+      end
+
+      @pins = @pins.paginate(:page => params[:page], :per_page => 8)
+    else
+      @pins = Pin.where(continent: "North America").paginate(:page => params[:page], :per_page => 8)
+    end
   end
 
   def south_america
+        if params[:country] or params[:interests]
+      @pins = Pin.where(continent: "South America")
+
+      if params[:country].present? and params[:country] != 'All'
+        @pins = @pins.where(country: params[:country])
+      end
+
+      if params[:interest].present? and params[:interest] != 'All'
+        @pins = @pins.joins(:interests).where(interests: { name: params[:interest] })
+      end
+
+      @pins = @pins.paginate(:page => params[:page], :per_page => 8)
+    else
     @pins = Pin.where(continent: "South America").paginate(:page => params[:page], :per_page => 8)
+    end
   end
 
   def europe
-  	@pins = Pin.where(continent: "Europe").paginate(:page => params[:page], :per_page => 8)
+        if params[:country] or params[:interests]
+      @pins = Pin.where(continent: "Europe")
+
+      if params[:country].present? and params[:country] != 'All'
+        @pins = @pins.where(country: params[:country])
+      end
+
+      if params[:interest].present? and params[:interest] != 'All'
+        @pins = @pins.joins(:interests).where(interests: { name: params[:interest] })
+      end
+
+      @pins = @pins.paginate(:page => params[:page], :per_page => 8)
+    else
+    @pins = Pin.where(continent: "Europe").paginate(:page => params[:page], :per_page => 8)
+    end
   end
 
   def africa
-  	@pins = Pin.where(continent: "Africa").paginate(:page => params[:page], :per_page => 8)
+        if params[:country] or params[:interests]
+      @pins = Pin.where(continent: "Africa")
+
+      if params[:country].present? and params[:country] != 'All'
+        @pins = @pins.where(country: params[:country])
+      end
+
+      if params[:interest].present? and params[:interest] != 'All'
+        @pins = @pins.joins(:interests).where(interests: { name: params[:interest] })
+      end
+
+      @pins = @pins.paginate(:page => params[:page], :per_page => 8)
+    else
+    @pins = Pin.where(continent: "Africa").paginate(:page => params[:page], :per_page => 8)
+    end
   end
 
   def asia
-  	@pins = Pin.where(continent: "Asia").paginate(:page => params[:page], :per_page => 8)
+        if params[:country] or params[:interests]
+      @pins = Pin.where(continent: "Asia")
+
+      if params[:country].present? and params[:country] != 'All'
+        @pins = @pins.where(country: params[:country])
+      end
+
+      if params[:interest].present? and params[:interest] != 'All'
+        @pins = @pins.joins(:interests).where(interests: { name: params[:interest] })
+      end
+
+      @pins = @pins.paginate(:page => params[:page], :per_page => 8)
+    else
+    @pins = Pin.where(continent: "Asia").paginate(:page => params[:page], :per_page => 8)
+    end
   end
 
   def australia
-  	@pins = Pin.where(continent: "Australia").paginate(:page => params[:page], :per_page => 8)
+        if params[:country] or params[:interests]
+      @pins = Pin.where(continent: "Australia")
+
+      if params[:country].present? and params[:country] != 'All'
+        @pins = @pins.where(country: params[:country])
+      end
+
+      if params[:interest].present? and params[:interest] != 'All'
+        @pins = @pins.joins(:interests).where(interests: { name: params[:interest] })
+      end
+
+      @pins = @pins.paginate(:page => params[:page], :per_page => 8)
+    else
+    @pins = Pin.where(continent: "Australia").paginate(:page => params[:page], :per_page => 8)
+    end
   end
 
   def video_purchasing
