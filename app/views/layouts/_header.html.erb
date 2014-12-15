@@ -6,11 +6,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <%# if false %>
+      <% if false %>
         <li>
           <%= link_to 'Blog', blog_path %>
         </li>
-        <%# end %>
+      <% end %>
         <% if current_user and current_user.admin? %>
           <li>
             <%= link_to 'Video purchasing', video_purchasing_path %>
