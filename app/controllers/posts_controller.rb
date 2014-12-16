@@ -8,6 +8,8 @@ class PostsController < ApplicationController
 	def create 
 		@post = Post.new(post_params)
 
+		@post.user = current_user
+
 		respond_to do |format|
 			if @post.save
 			format.html {redirect_to @post,
@@ -60,6 +62,6 @@ class PostsController < ApplicationController
 	private
 
 	def post_params
-		params.require(:post).permit(:title, :body)
+		params.require(:post).permit(:title, :body, :image)
 	end
 end

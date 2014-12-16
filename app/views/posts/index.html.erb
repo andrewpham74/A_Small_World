@@ -5,7 +5,13 @@
 </p>
 
 <% @posts.each do |post| %>
-  <h2><%= link_to post.title, post %></h2>
+  <h2><%= link_to post.title, post %> by <%= post.user.name %></h2>
+
+  <% if post.image.present? %>
+  <p>
+    <%= image_tag post.image %>
+  </p>
+  <% end %>
 
   <p>
     <%= post.body %>
@@ -15,6 +21,15 @@
     <p>
       <%= link_to 'Edit', edit_post_path(post) %><br>
       <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+
+  <h2>Comments</h2>
+
+  <% post.comments.order('created_at DESC').each do |comment| %>
+    <p>
+      <strong><%= comment.user.name %></strong><br>
+      <%= comment.body %>
     </p>
   <% end %>
 <% end %>

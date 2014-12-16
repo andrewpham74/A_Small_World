@@ -5,21 +5,16 @@
 			<div  class="panel panel-default">
 		    <div  class="panel-heading center">
 			
-				<%= image_tag @pin.image.url(:medium) %>
+				<%= image_tag @pin.image, style: 'width: 100%' %>
 			</div>
 			<div class="panel-body">
 			     <p><%= @pin.description %></p>
-			     <p><%= @pin.continent %></p>
-                 <p><%= @pin.country %></p>
-                 <p>
-                 	<strong>Interests</strong>
-
-                 	<ul>
-                 		<% @pin.interests.each do |interest| %>
-                 			<li><%= interest.name %></li>
-                 		<% end %>
-                 	</ul>
-                 </p>
+         <p><%= @pin.country %> (<%= @pin.continent %>)</p>
+         <p>
+          <strong>Interests: </strong> 
+          
+          <%= @pin.interests.collect(&:name).join(', ') %>
+         </p>
 				 <p><strong><%= @pin.user.name if @pin.user %></strong></p>
 				 <% if @pin.source %>
 				 <p>

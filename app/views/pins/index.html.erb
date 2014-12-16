@@ -72,16 +72,11 @@
         <%= link_to image_tag(pin.image.url(:medium)), pin %>
          <div class="panel-body">
          <p><%= pin.description %></p>
-         <p><%= pin.continent %></p>
-         <p><%= pin.country %></p>
+         <p><%= pin.country %> (<%= pin.continent %>)</p>
          <p>
-          <strong>Interests</strong>
-
-          <ul>
-            <% pin.interests.each do |interest| %>
-              <li><%= interest.name %></li>
-            <% end %>
-          </ul>
+          <strong>Interests: </strong> 
+          
+          <%= pin.interests.collect(&:name).join(', ') %>
          </p>
             
             <p><strong><%= pin.user.name if pin.user %></strong></p>
