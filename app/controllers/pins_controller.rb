@@ -50,7 +50,7 @@ class PinsController < ApplicationController
       page = agent.get(params[:link])
 
       if page.is_a?(Mechanize::Image)
-        @images = page
+        @images = [page]
       else
         @images = page.images
       end
