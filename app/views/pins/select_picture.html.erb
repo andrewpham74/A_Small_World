@@ -6,9 +6,17 @@
 	<% @images.each do |image| %>
 		<div class="box panel panel-default">
 			<%= form_tag new_pin_path, method: :get, target: '_blank' do %>
-				<button style="border: none; background-color: #fff; padding: 0;"><%= image_tag image.url.to_s %></button>
+				<% if image.is_a?(Mechanize::Image) %>
+					<button style="border: none; background-color: #fff; padding: 0;"><%= image_tag image.uri.to_s %></button>
+				<% else %>
+					<button style="border: none; background-color: #fff; padding: 0;"><%= image_tag image.url.to_s %></button>
+				<% end %>
 
-				<%= hidden_field_tag 'pin[image_url]', image.url.to_s %>
+				<% if image.is_a?(Mechanize::Image) %>
+					<%= hidden_field_tag 'pin[image_url]', image.uri.to_s %>
+				<% else %>
+					<%= hidden_field_tag 'pin[image_url]', image.url.to_s %>
+				<% end %>
 				<%= hidden_field_tag 'pin[source]', params[:link] %>
 			<% end %>
 		</div>
