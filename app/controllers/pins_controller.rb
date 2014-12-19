@@ -49,7 +49,11 @@ class PinsController < ApplicationController
     begin
       page = agent.get(params[:link])
 
-      @images = page.images
+      if page.is_a?(Mechanize::Image)
+        @images = page
+      else
+        @images = page.images
+      end
     rescue
       flash[:notice] = 'Please submit a valid link including http or https'
 
